@@ -1,0 +1,56 @@
+#!/bin/bash
+# VoidProxy post-installation script
+
+set -e
+
+echo "╔════════════════════════════════════════╗"
+echo "║        VoidProxy Installation          ║"
+echo "╚════════════════════════════════════════╝"
+echo ""
+
+# Create config directory
+mkdir -p /etc/voidproxy
+mkdir -p ~/.voidproxy/logs
+mkdir -p ~/.voidproxy/captures
+
+# Create default config if not exists
+if [ ! -f /etc/voidproxy/config ]; then
+    cat > /etc/voidproxy/config << EOF
+# VoidProxy Configuration
+[proxy]
+port = 8080
+host = 0.0.0.0
+
+[ssl]
+bypass = false
+cert_path = ~/.voidproxy/cert.pem
+
+[logging]
+level = info
+file = ~/.voidproxy/logs/proxy.log
+EOF
+    echo "[✓] Default config created at /etc/voidproxy/config"
+fi
+
+# Check dependencies
+echo "[*] Checking dependencies..."
+if ! command -v python3 &> /dev/null; then
+    echo "[!] Warning: python3 not found"
+fi
+
+if ! command -v openssl &> /dev/null; then
+    echo "[!] Warning: openssl not found"
+fi
+
+echo ""
+echo "╔════════════════════════════════════════╗"
+echo "║  VoidProxy installed successfully!    ║"
+echo "╠════════════════════════════════════════╣"
+echo "║  Run: voidproxy --help                 ║"
+echo "║  Docs: https://github.com/voidwarex0/voidproxy ║"
+echo "║  Config: /etc/voidproxy/config         ║"
+echo "║  Logs: ~/.voidproxy/logs/              ║"
+echo "╚════════════════════════════════════════╝"
+echo ""
+
+exit 0
