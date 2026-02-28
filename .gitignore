@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Package files
+*.deb
+*.ddeb
+*.changes
+*.buildinfo
+
+# Logs
+*.log
+*.pcap
+*.cap
+
+# Local directories
+.venv/
+venv/
+env/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VoidProxy user data
+~/.voidproxy/
