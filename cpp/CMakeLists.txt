@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.15)
+project(voidproxy_core)
+
+set(CMAKE_CXX_STANDARD 17)
+
+include_directories(include)
+
+file(GLOB_RECURSE SOURCES
+    src/*.cpp
+)
+
+add_library(voidproxy_core SHARED ${SOURCES})
