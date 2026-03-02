@@ -1,0 +1,9 @@
+#include "tls/tls_session.hpp"
+
+namespace vp {
+
+bool TlsSession::handshake() {
+    return true;
+}
+
+}
